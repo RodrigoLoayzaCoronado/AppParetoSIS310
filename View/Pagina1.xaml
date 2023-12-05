@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SIS310.View.Pagina1"
+             Title="Diagrama de Pareto">
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <VerticalStackLayout Margin="10">
+                    <Label Text="Producto"/>
+                    <Entry x:Name="txtProducto" Placeholder="Ingrese los Productos"
+                   WidthRequest="300" />
+                </VerticalStackLayout>
+                <HorizontalStackLayout>
+                    <VerticalStackLayout Margin="10">
+                        <Label Text="Cantidad"/>
+                        <Entry x:Name="txtCantidad" Placeholder="Ingrese las Cantidades"
+                    WidthRequest="150" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Margin="10">
+                        <Label Text="Unidades"/>
+                        <Entry x:Name="txtUnidades" Placeholder="Ingrese las Unidades" 
+                           WidthRequest="150" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+
+                <Button Clicked="Guardar_Clicked"
+                Text="Agregar"
+                WidthRequest="100"
+                HeightRequest="40"
+                Margin="25"
+                FontSize="14"/>
+            </VerticalStackLayout>
+            <Label Text="TABLA"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           FontSize="Medium"/>
+            <ListView x:Name="listaTablaPareto" BackgroundColor="Black">
+                <ListView.Header>
+                    <Grid BackgroundColor="Black">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Producto" TextColor="White" />
+                        <Label Grid.Column="1" Text="Cantidad" TextColor="White" />
+                        <Label Grid.Column="2" Text="Precio Unitario" TextColor="White" />
+                        <Label Grid.Column="3" Text="Ventas Totales" TextColor="White" />
+
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="Black">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Muestra Problema en la primera columna -->
+                                <Label Grid.Column="0" Text="{Binding Producto}" TextColor="White" />
+                                <!-- Muestra "Resultado: Cantidad" en la segunda columna -->
+                                <Label Grid.Column="1" Text="{Binding Cantidad}" TextColor="White" />
+                                <!-- Muestra "Resultado: Precio Unitario" en la segunda columna -->
+                                <Label Grid.Column="2" Text="{Binding Unidades}" TextColor="White" />
+                                <!-- Muestra "Resultado: Ventas Totales" en la tercera columna -->
+                                <Label Grid.Column="3" Text="{Binding Resultado}" TextColor="White" />
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label x:Name="Total" Text="TOTAL: 0 " HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" Margin="20"/>
+            <Button Text="CALCULAR" Clicked="Calcular_Clicked" WidthRequest="150" Margin="20"/>
+
+            <ListView x:Name="ResultadoTablaPareto" BackgroundColor="Black" IsVisible="false" AnchorY="200">
+                <ListView.Header>
+                    <Grid BackgroundColor="Black">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Producto" TextColor="White" />
+                        <Label Grid.Column="1" Text="Ingreso Total" TextColor="White" />
+                        <Label Grid.Column="2" Text="Ingreso Acumulado" TextColor="White" />
+                        <Label Grid.Column="3" Text="Porcentaje" TextColor="White" />
+
+
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="Black">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition Width="*" />
+
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Producto}" TextColor="White" />
+                                
+                                <Label Grid.Column="1" Text="{Binding Resultado}" TextColor="White" />
+                               
+                                <Label Grid.Column="2" Text="{Binding Unidades}" TextColor="White" />
+                                <Label Grid.Column="3" Text="{Binding Porcentaje}" TextColor="White" />
+                                
+
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Mostrar Grafica" Clicked="Grafica_Clicked" WidthRequest="150" Margin="20"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

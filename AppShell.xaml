@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SIS310.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SIS310.View"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.TabBarIsVisible="False">
+    
+
+    <FlyoutItem Title="SIS310" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+         Title="Pagina Principal"
+         ContentTemplate="{DataTemplate local:Principal}"
+         Route="Principal"/>
+        <ShellContent
+         Title="Diagrama de Pareto"
+         ContentTemplate="{DataTemplate local:Pagina1}"
+         Route="Pagina1"/>
+        <ShellContent
+         Title="Plan de Produccion"
+         ContentTemplate="{DataTemplate local:Page3}"
+         Route="Pagina2"/>
+
+
+
+    </FlyoutItem>
+
+</Shell>
